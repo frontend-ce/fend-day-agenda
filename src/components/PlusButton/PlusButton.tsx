@@ -4,8 +4,8 @@ import { CirclePlus } from "lucide-react"
 export const PlusButton = () => {
   return (
     
-      <Button variant="outline" size="icon">
-     <CirclePlus className="h-4 w-4" />
+      <Button className="rounded-full" variant="outline" size="icon">
+     <CirclePlus className="h-8 w-8" />
      </Button>
     
   );
