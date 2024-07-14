@@ -1,7 +1,17 @@
 import { Button } from "../ui/button";
+type Props = {
+  children: string | React.ReactNode;
+  mode: Boolean | undefined;
+};
 
-export const ButtonTalk = () => {
-  return (
-    <Button className="bg-[#832BD8]/[.20] border-[0.5px] border-[#A855F7] hover:bg-[#A855F7] focus:bg-[#A855F7] rounded-[5px] w-[154px]">Front-End CE</Button>
-  );
+export const ButtonTalk = ({ children, mode }: Props) => {
+  if (mode === true) {
+    return (
+      <Button className="bg-[#A855F7] border-[0.5px] border-[#A855F7] hover:bg-[#A855F7] rounded-[5px] w-[154px]">{children}</Button>
+    );
+  } else {
+    return (
+      <Button className="bg-[#832BD8]/[.20] border-[0.5px] border-[#A855F7] hover:bg-[#A855F7] rounded-[5px] w-[154px]">{children}</Button>
+    );
+  }
 };
