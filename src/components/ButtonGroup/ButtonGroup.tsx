@@ -5,10 +5,10 @@ export const ButtonGroup = () => {
     <div className="flex justify-center
     gap-4 flex-wrap w-full
     background-slate-200 h-50">
-      <ButtonTalk children="Test" mode={undefined} />
-      <ButtonTalk children="" mode={undefined} />
-      <ButtonTalk children="" mode={undefined} />
-      <ButtonTalk children="" mode={undefined} />
+      <ButtonTalk children="Front-End CE" initialMode={false} />
+      <ButtonTalk children="Convida" initialMode={false} />
+      <ButtonTalk children="Fire Banking" initialMode={false} />
+      <ButtonTalk children="Fire Banking" initialMode={false} />
     </div>
   );
 };
