@@ -1,7 +1,7 @@
 {
   "name": "fd-agenda",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
   "engines": {
     "node": ">=20"
@@ -11,6 +11,7 @@
     "build": "tsc -b && vite build",
     "coverage": "vitest run --coverage",
     "test": "vitest",
+    "test:ci": "vitest run",
     "lint": "eslint . --ext ts,js,tsx,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@radix-ui/react-separator": "^1.1.0",
+    "@radix-ui/react-avatar": "^1.1.0",
     "@radix-ui/react-slot": "^1.1.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -39,8 +41,8 @@
     "@storybook/react": "^8.2.2",
     "@storybook/react-vite": "^8.2.2",
     "@storybook/test": "^8.2.2",
-    "@testing-library/jest-dom": "^6.4.2",
-    "@testing-library/react": "^13.2.0",
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.14.10",
     "@types/react": "^18.3.3",
