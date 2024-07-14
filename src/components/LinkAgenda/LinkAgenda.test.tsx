@@ -3,6 +3,6 @@ import { LinkAgenda } from './LinkAgenda';
 
 test('renders LinkAgenda', () => {
   const { getByText } = render(<LinkAgenda />);
-  const element = getByText(/LinkAgenda/i);
+  const element = getByText(/Acontecendo agora/i);
   expect(element).toBeInTheDocument();
 });
