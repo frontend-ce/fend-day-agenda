@@ -8,7 +8,7 @@ const meta: Meta<typeof ButtonTalk> = {
   component: ButtonTalk,
   args: {
     children: 'Talk',
-    mode: true,
+    initialMode: true,
   },
   argTypes: {
     children: {
@@ -16,7 +16,7 @@ const meta: Meta<typeof ButtonTalk> = {
         type: 'text',
       },
     },
-    mode: {
+    initialMode: {
       control: {
         type: 'boolean',
       },
@@ -29,7 +29,7 @@ export default meta;
 export const Default: Story = {
   args: {
     children: "Enable",
-    mode: true,
+    initialMode: true,
   },
 
 }
@@ -37,6 +37,6 @@ export const Default: Story = {
 export const Disabled: Story = {
   args: {
     children: "Disable",
-    mode: false
+    initialMode: false
   }
 };
