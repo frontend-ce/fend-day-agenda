@@ -8,7 +8,8 @@ const meta: Meta<typeof SpeakerCard> = {
   component: SpeakerCard,
   tags: ["autodocs"],
   argTypes: {
-    label: { control: "text" }
+    label: { control: "text" },
+    tags: { control: "object" }
   },
 } satisfies Meta<typeof SpeakerCard>
 
@@ -16,6 +17,7 @@ export default meta;
 
 export const Default: Story = {
   args:{
-    label: "How to get away with murder"
+    label: "How to get away with murder",
+    tags: ['Tag1', 'Tag1', 'Tag1' ]
   }
 }
