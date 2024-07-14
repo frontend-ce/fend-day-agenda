@@ -2,12 +2,18 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { useAgenda } from './hooks/useAgenda'
 
 function App() {
   const [count, setCount] = useState(0)
 
+  const {data}  = useAgenda();
   return (
     <>
+      Talks from Comunidades: {data?.Comunidades.length??0}
+      Talks from Convida: {data?.Convida.length??0}
+      Talks from Frontend: {data?.Frontend.length??0}
+
       <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
