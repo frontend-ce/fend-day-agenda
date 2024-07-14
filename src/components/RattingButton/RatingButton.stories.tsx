@@ -12,6 +12,11 @@ const meta: Meta<typeof RatingButton> = {
       control: {
         label: "text",
       },
+      ratingLink: {
+        control: {
+          label: "text",
+        },
+      },
     },
   },
 } satisfies Meta<typeof RatingButton>;
@@ -21,5 +26,6 @@ export default meta;
 export const Default: Story = {
   args: {
     label: "Avaliar Palestra",
+    ratingLink: "https://www.frontendday.com.br/",
   },
 };
