@@ -8,13 +8,13 @@ export const Togglebutton = ({mode}:Props) => {
   if( mode == true ){
      return (
     <div>
-      <CirclePlus ></CirclePlus>
+      <CirclePlus color="#ffffff"/>
     </div>
   );
   } else {
     return (
     <div>
-      <CircleMinus></CircleMinus>
+      <CircleMinus color="#ffffff" />
     </div>
     )
   }
