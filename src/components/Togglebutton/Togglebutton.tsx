@@ -7,13 +7,13 @@ type Props ={
 export const Togglebutton = ({mode}:Props) => {
   if( mode == true ){
      return (
-    <div>
+    <div data-testid="true">
       <CirclePlus color="#ffffff"/>
     </div>
   );
   } else {
     return (
-    <div>
+    <div data-testid="false">
       <CircleMinus color="#ffffff" />
     </div>
     )
