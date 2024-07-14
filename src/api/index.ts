@@ -6,12 +6,7 @@ export const BASE_URL = import.meta.env.API_URL || 'https://api-mock-frontend-da
 
 const apiGet = async <T>(url: string): Promise<T> => {
 
-  const response:T = await fetch(url, {
-    headers:{
-      authorization: 'hackthon',
-      'Content-Type': 'application/json',
-    }
-  }).then(r => r.json())
+  const response:T = await fetch(url).then(r => r.json())
 
   return response
 }
