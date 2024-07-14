@@ -1,3 +1,3 @@
-export interface RattingButtonProps {
+export interface RatingButtonProps {
     label: string;
 }

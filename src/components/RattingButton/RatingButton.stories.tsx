@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { RattingButton } from "./RattingButton";
+import { RatingButton } from "./RatingButton";
 
-export type Story = StoryObj<typeof RattingButton>;
+export type Story = StoryObj<typeof RatingButton>;
 
-const meta: Meta<typeof RattingButton> = {
-  title: "Components/RattingButton",
-  component: RattingButton,
+const meta: Meta<typeof RatingButton> = {
+  title: "Components/RatingButton",
+  component: RatingButton,
   tags: ["autodocs"],
   argTypes: {
     label: {
@@ -14,7 +14,7 @@ const meta: Meta<typeof RattingButton> = {
       },
     },
   },
-} satisfies Meta<typeof RattingButton>;
+} satisfies Meta<typeof RatingButton>;
 
 export default meta;
 

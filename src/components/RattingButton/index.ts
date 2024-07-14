@@ -1,3 +1,3 @@
-import { RattingButton } from "./RattingButton"
+import { RatingButton } from "./RatingButton";
 
-export { RattingButton }
+export { RatingButton };
