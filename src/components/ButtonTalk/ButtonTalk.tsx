@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 type Props = {
   children: string | React.ReactNode;
-  mode: Boolean | undefined;
+  mode: boolean | undefined;
 };
 
 export const ButtonTalk = ({ children, mode }: Props) => {

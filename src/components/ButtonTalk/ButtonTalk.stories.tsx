@@ -36,7 +36,7 @@ export const Default: Story = {
 
 export const Disabled: Story = {
   args: {
-    children: "Disabled",
+    children: "Disable",
     mode: false
   }
 };
