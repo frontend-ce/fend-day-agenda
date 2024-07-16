@@ -18,7 +18,7 @@ export const ButtonGroup = (props: props) => {
   }
   return (
     <div className="flex justify-center
-    gap-4 flex-wrap w-full
+    gap-6 p-2 flex-wrap w-full
     background-slate-200 h-50">
       <ButtonTalk children="Front-End CE" active={mode == "frontend"} onModeChange={handleChange("frontend")} />
       <ButtonTalk children="Convida" active={mode == "convida"} onModeChange={handleChange("convida")} />

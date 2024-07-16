@@ -1,24 +1,24 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { Link } from "lucide-react";
-
-
-//substituir a => Link
+import { Link } from "react-router-dom";
 
 export const LinkAgenda = () => {
+
+  
+
   return (
-    <div>  
-      <div className="flex flex-row justify-between items-center p-2 md:p-1 space-x-4 md:space-x-6">
-        <a 
-          className="underline text-xs md:text-sm flex-1 text-center" 
-          /*to="/acontecendo-agora"*/ >
+    <div className="flex justify-center  items-center">
+      <div className="text-white flex flex-row justify-between items-center p-2 md:p-1 space-x-4 md:space-x-6">
+        <Link
+          className="underline text-[12px] "
+          to="/lives"
+        >
           Acontecendo agora
-        </a>
-        <a 
-          className="underline text-xs md:text-sm flex-1 text-center" 
-          /*to="/agenda"*/ >
+        </Link>
+        <Link
+          className="underline text-[12px] md:text-sm flex-1 text-center p-2 md:p-1"
+          to="/agenda"
+        >
           Ver minha agenda &gt;
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -12,15 +12,14 @@ export const SpeakerCard = ({
   imageUrl,
   name,
   role,
+  hour,
   onChangeMode,
 }: SpeakerCardProps) => {
   return (
-    <Card className="max-w-[300px] p-3 flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
+    <Card className="p-5 max-w-[500px] flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
       <div className="flex gap-3 justify-between items-start w-full">
-        <span className="text-[#A190B2]">8:00</span>
-        <h1
-          className="text-[#E6D5F7] mt-0 pt-0 w-full text-wrap whitespace-normal text-base max-w-[180px] break-words"
-        >
+        <span className="text-[#A190B2] text-sm">{hour}</span>
+        <h1 className="text-[#E6D5F7] mt-0 pt-0 w-full text-wrap whitespace-normal text-base break-words">
           {label}
         </h1>
         <Togglebutton initialMode={true} onModeChange={onChangeMode} />{" "}
