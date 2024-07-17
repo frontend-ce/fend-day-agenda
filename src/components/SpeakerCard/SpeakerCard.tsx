@@ -3,7 +3,7 @@ import { ProfileCard } from "../ProfileCard";
 import { Badge } from "../ui/badge";
 import { Card } from "../ui/card";
 import { SpeakerCardProps } from "./types";
-import { Togglebutton } from "../Togglebutton";
+import { ToggleButton } from "../ToggleButton";
 
 export const SpeakerCard = ({
   label,
@@ -13,32 +13,39 @@ export const SpeakerCard = ({
   name,
   role,
   hour,
+<<<<<<< HEAD
+=======
+  isSaved,
+>>>>>>> be0c5b7783381cf9f53e4a934126eeefeddc806a
   onChangeMode,
 }: SpeakerCardProps) => {
+  const handleToggleSave = () => {
+    onChangeMode(!isSaved);
+  };
+
   return (
+<<<<<<< HEAD
     <Card className="p-5 max-w-[500px] flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
+=======
+    <Card className="max-w-[500px] p-5 w-full flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
+>>>>>>> be0c5b7783381cf9f53e4a934126eeefeddc806a
       <div className="flex gap-3 justify-between items-start w-full">
         <span className="text-[#A190B2] text-sm">{hour}</span>
         <h1 className="text-[#E6D5F7] mt-0 pt-0 w-full text-wrap whitespace-normal text-base break-words">
           {label}
         </h1>
-        <Togglebutton initialMode={true} onModeChange={onChangeMode} />{" "}
+        <ToggleButton isSaved={isSaved} onToggle={handleToggleSave} />
       </div>
       <div className="flex gap-2 w-full justify-start overflow-x-auto scrollbar-cards [&::-webkit-scrollbar]:hidden">
-        {tags.map((tag: string) => (
+        {tags.map((tag: string, index) => (
           <Badge
+            key={index}
             variant="outline"
             className="bg-white text-[#A855F7] font-thin rounded-lg"
           >
             {tag}
           </Badge>
         ))}
-        <Badge
-          variant="outline"
-          className="bg-white text-[#A855F7] font-thin rounded-lg"
-        >
-          Carreira
-        </Badge>
       </div>
       <div className=" flex-cols p-2  w-full">
         <Separator className="w-full h-[0.3px] mb-4 bg-[#D9B1FF] rounded-xl" />
