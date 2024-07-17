@@ -1,13 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ReturnButton } from "./ReturnButton"
+import { Meta, StoryFn } from '@storybook/react';
+import { ReturnButton } from './ReturnButton';
+import { BrowserRouter } from 'react-router-dom';
 
-export type Story = StoryObj<typeof ReturnButton>
 
-const meta: Meta<typeof ReturnButton> = {
+export default {
   title: 'Components/ReturnButton',
   component: ReturnButton,
-} satisfies Meta<typeof ReturnButton>
+} as Meta;
 
-export default meta;
 
-export const Default: Story = {}
+const Template: StoryFn = () => (
+  <BrowserRouter>
+    <ReturnButton />
+  </BrowserRouter>
+);
+
+export const Default = Template.bind({});
