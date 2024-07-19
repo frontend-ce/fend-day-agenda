@@ -25,6 +25,11 @@ jobs:
           node-version: 20.15.1
       - name: Install dependencies
         run: npm ci
+      - name: Set environment variables
+        run: |
+          echo "VITE_SENTRY_DSN=${{ secrets.VITE_SENTRY_DSN }}" >> $GITHUB_ENV
+          echo "VITE_TRACE_PROPAGATION_TARGETS=${{ secrets.VITE_TRACE_PROPAGATION_TARGETS }}" >> $GITHUB_ENV
+          echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> $GITHUB_ENV
       - name: Publish to Chromatic
         uses: chromaui/action@latest
         with:
