@@ -1,17 +1,20 @@
-// src/components/ReturnButton/ReturnButton.stories.tsx
-import { Meta, StoryFn } from '@storybook/react';
+import { Meta } from '@storybook/react';
+import { reactRouterParameters, withRouter } from 'storybook-addon-remix-react-router';
 import { ReturnButton } from './ReturnButton';
-import { BrowserRouter } from 'react-router-dom';
 
 export default {
   title: 'Components/ReturnButton',
   component: ReturnButton,
+  decorators: [withRouter]
 } as Meta;
 
-const Template: StoryFn = () => (
-  <BrowserRouter>
-    <ReturnButton />
-  </BrowserRouter>
-);
-
-export const Default = Template.bind({});
+export const Default = {
+  parameters: {
+    reactRouter: reactRouterParameters({
+        routing: {
+          path: '/',
+          handle: 'Home Page',
+        }
+    })
+  }
+}
