@@ -12,9 +12,15 @@ export const MyAgenda = () => {
   const { data } = useAgenda();
   const { savedCardIds, toggleSaveCard } = useSavedTalks();
 
+  const allTalks = useMemo(() => {
+    if (!data) return [];
+    const sections = Object.values(data).flat();
+    return sections.flat();
+  }, [data]);
+
   const savedTalks = useMemo(() => {
-    return data?.Convida.filter((item: Palestra) => savedCardIds.includes(item.id)) || [];
-  }, [data, savedCardIds]);
+    return allTalks.filter((item: Palestra) => savedCardIds.includes(item.id));
+  }, [allTalks, savedCardIds]);
 
   const talksByHour = useMemo(() => {
     const grouped: Record<string, Palestra[]> = {};
@@ -37,27 +43,31 @@ export const MyAgenda = () => {
       </div>
       <DeadComponent title={"Abertura"} hours={"8:00"} />
 
-      {Object.keys(talksByHour).map((hour) => (
-        <div key={hour} className="w-full mt-8">
-          <h2 className="text-xl font-semibold">{hour}</h2>
-          <div className="mt-4 flex flex-col items-center gap-3">
-            {talksByHour[hour].map((talk) => (
-              <SpeakerCard
-                key={talk.id}
-                hour={talk.hour}
-                label={talk.title}
-                tags={talk.tags}
-                imageUrl={talk.speaker.image}
-                imageFallback={talk.speaker.title[0]}
-                name={talk.speaker.title}
-                role={talk.speaker.role}
-                isSaved={true}
-                onChangeMode={() => toggleSaveCard(talk.id)}
-              />
-            ))}
+      {Object.keys(talksByHour).length > 0 ? (
+        Object.keys(talksByHour).map((hour) => (
+          <div key={hour} className="w-full mt-8 text-center">
+            <h2 className="text-xl font-semibold">{hour}</h2>
+            <div className="mt-4 flex flex-col items-center gap-3">
+              {talksByHour[hour].map((talk) => (
+                <SpeakerCard
+                  key={talk.id}
+                  hour={talk.hour}
+                  label={talk.title}
+                  tags={talk.tags}
+                  imageUrl={talk.speaker.image}
+                  imageFallback={talk.speaker.title[0]}
+                  name={talk.speaker.title}
+                  role={talk.speaker.role}
+                  isSaved={true}
+                  onChangeMode={() => toggleSaveCard(talk.id)}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))
+      ) : (
+        <p>Nenhuma palestra salva para exibir.</p>
+      )}
 
       <DeadComponent title={"Encerramento"} hours={"18:00"} />
     </section>
