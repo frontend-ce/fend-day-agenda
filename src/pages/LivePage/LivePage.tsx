@@ -1,17 +1,14 @@
 import { Header } from "@/components/Header";
+import { ReturnButton } from "@/components/ReturnButton";
 import { SpeakerSection } from "@/components/SpeakerSection";
 import { Separator } from "@/components/ui/separator";
 import { useAgenda } from "@/hooks/useAgenda";
-import { ChevronLeft } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import { saveLocalStorage } from "./utils/saveLocalStorage";
+import { useSavedTalks } from "@/hooks/useSavedTalks";
 import { getLiveTalk, getNextTalk } from "./utils/talks";
 
 export const LivePage = () => {
   const { data } = useAgenda();
-
-  const [savedCardIds, setSavedCardIds] = useState<number[]>([]);
+  const { savedCardIds, toggleSaveCard } = useSavedTalks();
   const now = new Date();
 
   const liveFrontendTalk = getLiveTalk(data?.Frontend || [], now);
@@ -23,10 +20,8 @@ export const LivePage = () => {
   const nextConvidadosTalk = getNextTalk(data?.Convida || [], now);
 
   return (
-    <section className="container mt-8 flex flex-col items-center">
-      <Link to="/" className="self-start">
-        <ChevronLeft size={28} className="text-[#A855F7] self-start absolute" />
-      </Link>
+    <section className="container mt-12 flex flex-col items-center">
+      <ReturnButton/>
       <Header label="Agenda do Evento" />
       <h2 className="text-white text-center mt-8 text-xl font-semibold">
         Acontecendo agora:
@@ -34,25 +29,19 @@ export const LivePage = () => {
       {liveFrontendTalk || liveConvidadosTalk || liveComunidadesTalk ? (
         <>
           <SpeakerSection
-            handleCardModeChange={(cardId, newMode) =>
-              saveLocalStorage(cardId, newMode, setSavedCardIds)
-            }
+            handleCardModeChange={toggleSaveCard}
             liveTalk={liveFrontendTalk}
             savedCardIds={savedCardIds}
             sectionTitle="Front-End CE"
           />
           <SpeakerSection
-            handleCardModeChange={(cardId, newMode) =>
-              saveLocalStorage(cardId, newMode, setSavedCardIds)
-            }
+            handleCardModeChange={toggleSaveCard}
             liveTalk={liveConvidadosTalk}
             savedCardIds={savedCardIds}
             sectionTitle="Convida"
           />
           <SpeakerSection
-            handleCardModeChange={(cardId, newMode) =>
-              saveLocalStorage(cardId, newMode, setSavedCardIds)
-            }
+            handleCardModeChange={toggleSaveCard}
             liveTalk={liveComunidadesTalk}
             savedCardIds={savedCardIds}
             sectionTitle="Comunidades"
@@ -64,32 +53,26 @@ export const LivePage = () => {
         </p>
       )}
       <Separator className="w-20 mt-8 h-1 rounded-2xl self-center bg-[#7c3aed]" />
-      <section className="my-8">
+      <section className="mb-12 mt-8">
         <h3 className="text-xl font-semibold text-center text-white">
           Próximas Talks
         </h3>
         {nextFrontendTalk || nextConvidadosTalk || nextComunidadesTalk ? (
           <>
             <SpeakerSection
-              handleCardModeChange={(cardId, newMode) =>
-                saveLocalStorage(cardId, newMode, setSavedCardIds)
-              }
+              handleCardModeChange={toggleSaveCard}
               liveTalk={nextFrontendTalk}
               savedCardIds={savedCardIds}
               sectionTitle="Front-End CE"
             />
             <SpeakerSection
-              handleCardModeChange={(cardId, newMode) =>
-                saveLocalStorage(cardId, newMode, setSavedCardIds)
-              }
+              handleCardModeChange={toggleSaveCard}
               liveTalk={nextConvidadosTalk}
               savedCardIds={savedCardIds}
               sectionTitle="Convida"
             />
             <SpeakerSection
-              handleCardModeChange={(cardId, newMode) =>
-                saveLocalStorage(cardId, newMode, setSavedCardIds)
-              }
+              handleCardModeChange={toggleSaveCard}
               liveTalk={nextComunidadesTalk}
               savedCardIds={savedCardIds}
               sectionTitle="Comunidades"
