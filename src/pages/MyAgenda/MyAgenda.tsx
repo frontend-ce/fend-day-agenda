@@ -42,11 +42,9 @@ export const MyAgenda = () => {
         <LinkAgenda />
       </div>
       <DeadComponent title={"Abertura"} hours={"8:00"} />
-
       {Object.keys(talksByHour).length > 0 ? (
         Object.keys(talksByHour).map((hour) => (
-          <div key={hour} className="w-full mt-8 text-center">
-            <h2 className="text-xl font-semibold">{hour}</h2>
+          <div key={hour} className="w-full mt-8">
             <div className="mt-4 flex flex-col items-center gap-3">
               {talksByHour[hour].map((talk) => (
                 <SpeakerCard
