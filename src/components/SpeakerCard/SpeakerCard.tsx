@@ -4,6 +4,7 @@ import { Badge } from "../ui/badge";
 import { Card } from "../ui/card";
 import { SpeakerCardProps } from "./types";
 import { ToggleButton } from "../ToggleButton";
+import { RatingButton } from "../RatingButton"; // Importando o RatingButton
 
 export const SpeakerCard = ({
   label,
@@ -15,10 +16,24 @@ export const SpeakerCard = ({
   hour,
   isSaved,
   onChangeMode,
-}: SpeakerCardProps) => {
+  ratingLink,  
+}: SpeakerCardProps & {  ratingLink: string }) => { 
+
   const handleToggleSave = () => {
     onChangeMode(!isSaved);
   };
+
+
+  const currentTime = new Date();
+  const currentHour = currentTime.getHours();
+  const currentMinute = currentTime.getMinutes();
+
+
+  const limitHour = 0; 
+  const limitMinute = 0 ; 
+
+  
+  const isAfterLimit = (currentHour > limitHour) || (currentHour === limitHour && currentMinute >= limitMinute);
 
   return (
     <Card className="max-w-[500px] p-5 w-full flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
@@ -48,6 +63,9 @@ export const SpeakerCard = ({
           imageUrl={imageUrl}
           imageFallback={imageFallback}
         />
+        {isAfterLimit && (
+          <RatingButton label={""}  ratingLink={ratingLink} />
+        )}
       </div>
     </Card>
   );
