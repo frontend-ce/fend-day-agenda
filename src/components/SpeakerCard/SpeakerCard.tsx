@@ -13,10 +13,7 @@ export const SpeakerCard = ({
   name,
   role,
   hour,
-<<<<<<< HEAD
-=======
   isSaved,
->>>>>>> be0c5b7783381cf9f53e4a934126eeefeddc806a
   onChangeMode,
 }: SpeakerCardProps) => {
   const handleToggleSave = () => {
@@ -24,11 +21,8 @@ export const SpeakerCard = ({
   };
 
   return (
-<<<<<<< HEAD
-    <Card className="p-5 max-w-[500px] flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
-=======
+    
     <Card className="max-w-[500px] p-5 w-full flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
->>>>>>> be0c5b7783381cf9f53e4a934126eeefeddc806a
       <div className="flex gap-3 justify-between items-start w-full">
         <span className="text-[#A190B2] text-sm">{hour}</span>
         <h1 className="text-[#E6D5F7] mt-0 pt-0 w-full text-wrap whitespace-normal text-base break-words">

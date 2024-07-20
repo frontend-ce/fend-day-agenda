@@ -4,6 +4,7 @@ import { ButtonGroup } from "@/components/ButtonGroup";
 import { DeadComponent } from "@/components/DeadComponent";
 import { Header } from "@/components/Header";
 import { LinkAgenda } from "@/components/LinkAgenda";
+import { ReturnButton } from "@/components/ReturnButton";
 import { SpeakerCard } from "@/components/SpeakerCard";
 import { useAgenda } from "@/hooks/useAgenda";
 
@@ -11,12 +12,12 @@ import { useAgenda } from "@/hooks/useAgenda";
 export const HomePage = () => {
   
   const { data } = useAgenda();
-console.log(data);
+
   return (
-    <section className=" flex flex-col items-center justify-center container">
-    <div className="mt-8">
-     <Header label={"Agenda do evento"} />
-     </div>
+    <section className="container mt-12 flex flex-col items-center">
+    <ReturnButton/>
+    <Header label="Agenda do Evento" />
+
      <LinkAgenda />
      <div className="mt-8">
      <ButtonGroup />
@@ -25,7 +26,7 @@ console.log(data);
      <div className="mt-8 mx-auto flex flex-col items-center justify-center gap-3">
       {data?.Convida.map((item: Palestra) => (
         <SpeakerCard
-        hour={item.hour}
+          hour={item.hour}
           label={item.title}
           tags={item.tags}
           name={item.speaker.title}
@@ -35,7 +36,7 @@ console.log(data);
           // eslint-disable-next-line @typescript-eslint/no-unused-vars
           onChangeMode={function (_mode: boolean): void {
             throw new Error("Function not implemented.");
-          } }       />
+          } } isSaved={false}       />
       ))}
      </div>
      <DeadComponent title={"Abertura"} hours={"8:00"} />
