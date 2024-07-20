@@ -7,8 +7,6 @@ import { LinkAgenda } from "@/components/LinkAgenda";
 import { ReturnButton } from "@/components/ReturnButton";
 import { SpeakerCard } from "@/components/SpeakerCard";
 import { useAgenda } from "@/hooks/useAgenda";
-
-
 export const HomePage = () => {
   
   const { data } = useAgenda();
@@ -32,11 +30,9 @@ export const HomePage = () => {
           name={item.speaker.title}
           role={item.speaker.role}
           imageUrl={item.speaker.image}
-          imageFallback={item.speaker.title}
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          onChangeMode={function (_mode: boolean): void {
+          imageFallback={item.speaker.title} isSaved={false} onChangeMode={function (): void {
             throw new Error("Function not implemented.");
-          } } isSaved={false}       />
+          } }              />
       ))}
      </div>
      <DeadComponent title={"Abertura"} hours={"8:00"} />

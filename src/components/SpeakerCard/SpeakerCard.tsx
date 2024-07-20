@@ -21,7 +21,6 @@ export const SpeakerCard = ({
   };
 
   return (
-    
     <Card className="max-w-[500px] p-5 w-full flex items-start flex-col justify-center bg-transparent border gap-4 border-[#D9B1FF] rounded-lg ">
       <div className="flex gap-3 justify-between items-start w-full">
         <span className="text-[#A190B2] text-sm">{hour}</span>
