@@ -1,13 +1,28 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { MyAgenda } from "./MyAgenda"
+import type { Meta, StoryObj } from "@storybook/react";
+import { MyAgenda } from ".";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter } from "react-router-dom";
+import { Story } from "@storybook/blocks";
 
-export type Story = StoryObj<typeof MyAgenda>
+export type Story = StoryObj<typeof MyAgenda>;
+
+const queryClient = new QueryClient();
 
 const meta: Meta<typeof MyAgenda> = {
-  title: 'Components/MyAgenda',
+  title: "Pages/My Agenda",
+  tags: ["autodocs"],
   component: MyAgenda,
-} satisfies Meta<typeof MyAgenda>
+  decorators: [
+    (Story) => (
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <Story />
+        </BrowserRouter>
+      </QueryClientProvider>
+    ),
+  ],
+};
 
 export default meta;
 
-export const Default: Story = {}
+export const Default: Story = {};
