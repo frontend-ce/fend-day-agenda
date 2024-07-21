@@ -13,7 +13,6 @@ export const AppRoutes = () => {
       <Route path="/agenda" element={<MyAgenda/>} />
       <Route path="/lives" element={<LivePage />} />
       <Route path="*" element={<h1>404</h1>} />
-      
     </Routes>
   );
 };
