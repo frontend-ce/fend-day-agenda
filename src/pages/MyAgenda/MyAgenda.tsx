@@ -60,7 +60,10 @@ export const MyAgenda = () => {
               imageFallback={talk.speaker.title[0]}
               name={talk.speaker.title}
               role={talk.speaker.role}
-              isSaved={true}
+              room={talk.room}
+              keynote={talk.keynote}
+              showRoom
+              isSaved
               onChangeMode={() => toggleSaveCard(talk.id)}
             />
           ))}
@@ -76,7 +79,10 @@ export const MyAgenda = () => {
               imageFallback={talk.speaker.title[0]}
               name={talk.speaker.title}
               role={talk.speaker.role}
-              isSaved={true}
+              room={talk.room}
+              keynote={talk.keynote}
+              showRoom
+              isSaved
               onChangeMode={() => toggleSaveCard(talk.id)}
             />
           ))}
