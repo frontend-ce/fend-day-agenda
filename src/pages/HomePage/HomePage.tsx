@@ -9,6 +9,7 @@ import { SpeakerCard } from "@/components/SpeakerCard";
 import { useAgenda } from "@/hooks/useAgenda";
 import { useSavedTalks } from "@/hooks/useSavedTalks";
 import { Mode } from "@/components/ButtonGroup/types";
+import { splitTalksToMidDay } from "@/lib/talks";
 
 export const HomePage = () => {
   const { data } = useAgenda();
@@ -28,6 +29,9 @@ export const HomePage = () => {
     (talk) => !currentMode || talk.room === currentMode.toLowerCase(),
   );
 
+  const { talksBeforeMidDay, talksAfterMidDay } =
+    splitTalksToMidDay(filteredTalks);
+
   return (
     <section className="container my-12 flex flex-col items-center">
       <ReturnButton />
@@ -41,7 +45,7 @@ export const HomePage = () => {
 
       <div className="space-y-4">
         <DeadComponent title="Abertura" hours="8:00" />
-        {filteredTalks.map((talk) => (
+        {talksBeforeMidDay.map((talk) => (
           <SpeakerCard
             key={talk.id}
             hour={talk.hour}
@@ -53,6 +57,22 @@ export const HomePage = () => {
             role={talk.speaker.role}
             isSaved={savedCardIds.includes(talk.id)}
             onChangeMode={() => toggleSaveCard(talk.id)}
+          />
+        ))}
+        <DeadComponent title="Almoço" hours="12:00" />
+        {talksAfterMidDay.map((talk) => (
+          <SpeakerCard
+            key={talk.id}
+            hour={talk.hour}
+            label={talk.title}
+            tags={talk.tags}
+            imageUrl={talk.speaker.image}
+            imageFallback={talk.speaker.title[0]}
+            name={talk.speaker.title}
+            role={talk.speaker.role}
+            isSaved={savedCardIds.includes(talk.id)}
+            onChangeMode={() => toggleSaveCard(talk.id)}
+            keynote={talk.keynote}
           />
         ))}
         <DeadComponent title="Encerramento" hours="18:00" />
