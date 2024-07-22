@@ -55,6 +55,9 @@ export const HomePage = () => {
             imageFallback={talk.speaker.title[0]}
             name={talk.speaker.title}
             role={talk.speaker.role}
+            room={talk.room}
+            keynote={talk.keynote}
+            showRoom={!currentMode}
             isSaved={savedCardIds.includes(talk.id)}
             onChangeMode={() => toggleSaveCard(talk.id)}
           />
@@ -70,9 +73,11 @@ export const HomePage = () => {
             imageFallback={talk.speaker.title[0]}
             name={talk.speaker.title}
             role={talk.speaker.role}
+            room={talk.room}
+            keynote={talk.keynote}
+            showRoom={!currentMode}
             isSaved={savedCardIds.includes(talk.id)}
             onChangeMode={() => toggleSaveCard(talk.id)}
-            keynote={talk.keynote}
           />
         ))}
         <DeadComponent title="Encerramento" hours="18:00" />
