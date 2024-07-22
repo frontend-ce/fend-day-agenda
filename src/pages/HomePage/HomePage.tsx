@@ -13,16 +13,20 @@ import { Mode } from "@/components/ButtonGroup/types";
 export const HomePage = () => {
   const { data } = useAgenda();
   const { savedCardIds, toggleSaveCard } = useSavedTalks();
-  
-  const [currentMode, setCurrentMode] = useState<Mode>("Frontend");
+
+  const [currentMode, setCurrentMode] = useState<Mode | undefined>(undefined);
 
   const keys = ["Frontend", "Convida", "FireBanking", "Comunidades"];
 
-  const allTalks = keys .reduce((acc: Palestra[], key) => {
+  const allTalks = keys
+    .reduce((acc: Palestra[], key) => {
       return acc.concat(data?.[key] || []);
-    }, []).sort((a, b) => a.hour.localeCompare(b.hour));
+    }, [])
+    .sort((a, b) => a.hour.localeCompare(b.hour));
 
-  const filteredTalks = allTalks.filter((talk) => talk.room === currentMode.toLowerCase());
+  const filteredTalks = allTalks.filter(
+    (talk) => !currentMode || talk.room === currentMode.toLowerCase(),
+  );
 
   return (
     <section className="container my-12 flex flex-col items-center">
@@ -34,8 +38,9 @@ export const HomePage = () => {
       <div className="my-8 w-full flex justify-center">
         <ButtonGroup onChange={setCurrentMode} />
       </div>
-      <DeadComponent title="Abertura" hours="8:00" />
-      <div className="flex flex-col items-center gap-6 mt-6 w-full mb-8">
+
+      <div className="space-y-4">
+        <DeadComponent title="Abertura" hours="8:00" />
         {filteredTalks.map((talk) => (
           <SpeakerCard
             key={talk.id}
@@ -50,8 +55,8 @@ export const HomePage = () => {
             onChangeMode={() => toggleSaveCard(talk.id)}
           />
         ))}
+        <DeadComponent title="Encerramento" hours="18:00" />
       </div>
-      <DeadComponent title="Encerramento" hours="18:00" />
     </section>
   );
 };
